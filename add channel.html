@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="LLM Channel & Price Manager - Quản lý kênh và giá cho LLM AI VN">
+    <title>LLM Channel & Price Manager</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- External CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <!-- Toast Container -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <!-- Theme Toggle Button -->
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+        <span class="theme-icon sun">☀️</span>
+        <span class="theme-icon moon">🌙</span>
+    </button>
+
+    <div class="container">
+        <h1>LLM Channel Manager</h1>
+        <p class="subtitle">Quản lý kênh và giá cho LLM AI VN một cách dễ dàng</p>
+
+        <div class="form-grid">
+            <div class="form-group full-width">
+                <label for="systemToken">System Token (Authorization)</label>
+                <input type="password" id="systemToken" value="e2535681c9dd4df19487484ed2ecd7b4"
+                    placeholder="Nhập System Token...">
+                <span class="error-message" id="systemToken-error"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="baseUrl">Base URL của nguồn</label>
+                <input type="text" id="baseUrl" placeholder="https://api.example.com" value="https://api.openai.com">
+                <span class="error-message" id="baseUrl-error"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="sourceToken">Token của nguồn (API Key)</label>
+                <input type="password" id="sourceToken" placeholder="sk-...">
+                <span class="error-message" id="sourceToken-error"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="sourceModel">Tên Model từ nguồn</label>
+                <input type="text" id="sourceModel" placeholder="gpt-4o">
+                <span class="error-message" id="sourceModel-error"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="targetModel">Tên Model trên LLM AI VN</label>
+                <input type="text" id="targetModel" placeholder="gpt-4o-vn">
+                <span class="error-message" id="targetModel-error"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="inputPrice">Giá Input ($ / 1M tokens)</label>
+                <input type="number" id="inputPrice" step="0.0001" placeholder="Ví dụ: 2.5">
+                <span class="error-message" id="inputPrice-error"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="outputPrice">Giá Output ($ / 1M tokens)</label>
+                <input type="number" id="outputPrice" step="0.0001" placeholder="Ví dụ: 10.0">
+                <span class="error-message" id="outputPrice-error"></span>
+            </div>
+        </div>
+
+        <button id="btnRun" class="btn-submit" onclick="runScript()">
+            <span id="btnText">Tạo Channel & Update Giá</span>
+        </button>
+
+        <button id="btnClearCache" class="btn-secondary">
+            Xóa Cache
+        </button>
+
+        <div class="console-container">
+            <div class="console-header">
+                <span class="console-header-title">System Log</span>
+                <button class="btn-clear" onclick="clearLog()">🗑️ Clear</button>
+            </div>
+            <div id="console-log"></div>
+        </div>
+    </div>
+
+    <!-- External JavaScript -->
+    <script src="app.js"></script>
+</body>
+
+</html>
